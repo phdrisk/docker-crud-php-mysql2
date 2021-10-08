@@ -1,0 +1,19 @@
+{
+    "name": "root/html",
+    "description": "app",
+    "autoload": {
+        "psr-4": {
+            "src\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Luiz Carlos Martins",
+            "email": "luiz_pr@hotmail.com"
+        }
+    ],
+    "require": {
+       "slim/slim":">=3.0.0"
+   },
+    "minimum-stability": "dev"
+}
