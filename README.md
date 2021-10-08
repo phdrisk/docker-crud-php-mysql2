@@ -72,4 +72,12 @@ chmod +x phpunit
 ./phpunit --version
 
 ```
+Executar Unit
+
+```
+./phpunit tests
+
+```
+https://php.com.br/24?testes-unitarios-com-a-phpunit
+
 
