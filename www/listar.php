@@ -10,10 +10,6 @@
       <th scope="col">Data Nascimento</th>
       <th scope="col"></th>
       <th scope="col"></th>
-
-
-
-
     </tr>
   </thead>
   <tbody>
@@ -21,9 +17,6 @@
    <?php 
   
    $tabela = json_decode($registros->getLista(false)->getResultado());
-
-
-
    foreach($tabela as $chave => $valor){
     echo "<tr><th scope='row'>{$valor->codigo}</th>";
     foreach($valor as $chaves => $valor2){
