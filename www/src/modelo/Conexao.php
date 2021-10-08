@@ -1,5 +1,12 @@
 <?php
 namespace src\modelo;
+
+/*
+* Classe Conexao
+* @autor Luiz Carlos Martins
+* @email luiz_pr@hotmail.com/phdrisk@phdrisk.com.br
+* @acess public
+*/
 class  Conexao {
 
    static $instance;
@@ -8,6 +15,11 @@ class  Conexao {
    private $usuario = "root";
    private $senha   = "phprs";
 
+  /*
+  * Função construtora 
+  * @access private
+  * @return void
+  */
 
   	private function __construct()
 		{
@@ -26,7 +38,11 @@ class  Conexao {
          #        mysqli_select_db($this->conexaoMysql, "db");
 		}
 	  	
-	// ----------------------------------------
+  /*
+  * Função de retorno da instancia
+  * @access public static
+  * @return instanceMetodo
+  */
 	public static function get_instance()
 		{
 		/*

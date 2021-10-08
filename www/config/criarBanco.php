@@ -28,8 +28,13 @@ $sql_i = "insert developers (nome,sexo,idade,hobby,datanascimento) values ('Luiz
 
     ";
 echo "<h1>";
-if(mysqli_query($con,$sql_i))
+if(mysqli_query($con,$sql_i)){
 	echo "REGISTROS INSERIDOS COM SUCESSO!";
+  sleep(2);
+  echo "<script>location.href='../index.php'</script>";
+
+	}
 else
 	echo "ERRO AO INSERIR REGISTROS! ".mysqli_error($con);
 echo "</h1>";
+

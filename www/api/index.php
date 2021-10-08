@@ -1,20 +1,20 @@
 <?php
-
-
 // -->
 use \Psr\Http\Message\ServerRequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
 require '../vendor/autoload.php';
-
 $app        = new \Slim\App();
-
-
 $conexao    = src\modelo\Conexao::get_instance();
 $developers = new src\modelo\Developers($conexao);
-// --> CONTROLADORES
+
+/*
+* Função controladora Anonima RESTFull/Slim de inclusao
+* @param Request $request, Response $response, array $args
+* @param Class $developers
+* @return StringResult
+*/
 
 $controlerIncluir =  function(Request $request, Response $response, array $args) use ($developers){
-
 
   $dbParams     = array("nome","sexo","idade","hobby","datanascimento");
   $params       = $request->getParams();
@@ -62,7 +62,12 @@ $controlerIncluir =  function(Request $request, Response $response, array $args)
 };
 
 
-
+/*
+* Função controladora Anonima RESTFull/Slim de Consulta
+* @param Request $request, Response $response, array $args
+* @param Class $developers
+* @return String de Result
+*/
 
 $controlerConsultar =  function(Request $request, Response $response, array $args) use ($developers){
 
@@ -104,13 +109,12 @@ $controlerConsultar =  function(Request $request, Response $response, array $arg
 };
 
 
-$controlerConsultarId =  function($id) use ($developers){
-
-  print_r($args);
-  print_r($request->getParams()); exit;
-
-   
-};
+/*
+* Função controladora Anonima RESTFull/Slim de alteracao
+* @param Request $request, Response $response, array $args
+* @param Class $developers
+* @return String de Result
+*/
 
 $controlerAlterar =  function(Request $request, Response $response, array $args) use ($developers){
 
@@ -145,6 +149,13 @@ $controlerAlterar =  function(Request $request, Response $response, array $args)
 
 };
 
+/*
+* Função controladora Anonima RESTFull/Slim de exclusao
+* @param Request $request, Response $response, array $args
+* @param Class $developers
+* @return String de Result
+*/
+
 $controlerApagar =  function(Request $request, Response $response, array $args) use ($developers){
 
   $codigo = $args['codigo'];
@@ -158,37 +169,17 @@ $controlerApagar =  function(Request $request, Response $response, array $args) 
 
 };
 
-$controlerIndex =  function(Request $request, Response $response, array $args) use ($developers){
 
+/*
+* Instancia RESTFull/Slim 
+* @param Request $request, Response $response, array $args
+* @param Class $developers
+* @return String de Result
+*/
 
-};
-
-
-
-$app->get('/', $controlerIndex);
-
-// ---> POST ( inclusao )
-$app->post('/dev/', $controlerIncluir);
-// --> GET ( selecao ) 
-$app->get('/dev/', $controlerConsultar);
-
-$app->get('/dev/{codigo}', $controlerConsultar);
-
-// --> DELETE ( exclusao )
-//$app->delete('/dev/', $controlerApagar);
+$app->post('/dev/',           $controlerIncluir);
+$app->get('/dev/',            $controlerConsultar);
+$app->get('/dev/{codigo}',    $controlerConsultar);
 $app->delete('/dev/{codigo}', $controlerApagar);
-
-// --> PUT ( alteracao )
-$app->put('/dev/', $controlerAlterar);
-
-
-
-$test =  function(Request $request, Response $response, array $args) use ($developers){
-  print_r($args);
-  print_r($request->getParams()); exit;
-
-};
-
-
-// -->
+$app->put('/dev/',            $controlerAlterar);
 $app->run();
