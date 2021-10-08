@@ -1,3 +1,5 @@
 *.txt
 *teste*
 *curl*
+.htaccess_
+x_testes/
