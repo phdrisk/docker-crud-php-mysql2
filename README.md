@@ -18,7 +18,8 @@ sudo chmod +x /usr/local/bin/docker-compose
 | clone o arquivo do github dentro desta pasta
 
 ```
-git clone git@github.com:phdrisk/docker-crud-php-mysql.git
+git clone git@github.com:phdrisk/docker-crud-php-mysql2.git
+
 ```
 
 Caso necessário modifique a porta de utilização do app Docker
