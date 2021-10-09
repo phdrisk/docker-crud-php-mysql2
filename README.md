@@ -56,7 +56,45 @@ db2:
 ```
 # 2) UTILIZAÇÃO
 ## API endpoints
-### Retorna todos os desenvolvedores
+### Retorna os dados de todos os desenvolvedores
+```
+GET /developers/
+Codes 200 (sucesso) / 400 (erro)
+```
+### Retorna os dados dos desenvolvedores através da querystring
+```
+GET /developers/?
+Codes 200 (sucesso) / 404 (erro)
+```
+### Retorna dados de um desenvolvedor
+```
+GET /developers/{codigo}
+Codes 200 (sucesso) / 400 (erro)
+```
+### Adiciona um desenvolvedor
+```
+POST /developers/
+Codes 200 (sucesso) / 400 (erro)
+```
+### Atualiza os registros de um desenvolvedor
+```
+POST /developers/
+Codes 200 (sucesso) / 400 (erro)
+```
+### Apaga os registros de um desenvolvedor
+```
+DELETE /developers/{codigo}
+Codes 204 (sucesso) / 400 (erro)
+```
+
+
+
+
+
+
+
+
+
 
 # OUTROS
 ## Instalação phpunit
