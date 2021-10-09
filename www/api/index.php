@@ -1,11 +1,31 @@
 <?php
 // -->
+date_default_timezone_set('UTC');
 use \Psr\Http\Message\ServerRequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
 require '../vendor/autoload.php';
 $app        = new \Slim\App();
 $conexao    = src\modelo\Conexao::get_instance();
+$funcoes    = src\modelo\Funcoes::get_instance();
 $developers = new src\modelo\Developers($conexao);
+
+
+
+// /*
+// * Função para calcular a diferenca entre anos de duas datas
+// * @acess public
+// * @param Date
+// * @return String/Integer
+// */
+
+// function calcularData($data) {
+
+//            $dataAtual = date("Y-m-d");
+//            $diferenca = strtotime($dataAtual) - strtotime($data) ;
+//            $anos = floor( $diferenca / ((60 * 60 * 24) * (30*12)));
+//            return $anos;
+
+//         };
 
 /*
 * Função controladora Anonima RESTFull/Slim de inclusao
@@ -125,11 +145,16 @@ $controlerConsultar =  function(Request $request, Response $response, array $arg
 * @return String de Result
 */
 
-$controlerAlterar =  function(Request $request, Response $response, array $args) use ($developers){
+$controlerAlterar =  function(Request $request, Response $response, array $args) use ($developers,$funcoes){
 
   $dbParams = array("nome","sexo","idade","hobby","datanascimento");
   $params = $request->getParams();
   $codigo = $params['codigo'] ?: false;
+
+ $data = strval($params['datanascimento']); 
+ $params['idade'] = $funcoes::calcularData($data);
+
+  
 
  // ---> VERIFICA SE O PARAMETRO EXISTE E CRIA A CONDICAO
   foreach($params as $chave => $valor){
@@ -144,6 +169,9 @@ $controlerAlterar =  function(Request $request, Response $response, array $args)
   $where = substr($where,0,-2);
   $where .= " where codigo='".$codigo."'";
   // -->
+
+
+
   if($developers->alterar($codigo,$where)){
 
     $mensagem = array("mensagem"=>"Registro Alterado!","status"=>"200");

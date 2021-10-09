@@ -102,7 +102,6 @@ class ConsultaCurl{
         unset($variaveis['inputCodigo']);
         $parametros = $this->corrigirParametros($variaveis);
 
-
         $this->init($parametros);
         curl_setopt ($this->ch, CURLOPT_POST, 1);
         curl_setopt ($this->ch, CURLOPT_POSTFIELDS, $parametros);
@@ -121,10 +120,15 @@ class ConsultaCurl{
     public function putAlterar($variaveis){
         
         // -->
+        //print __FILE__."<br>";    print_r($variaveis); exit;
+
+
         $parametros = $this->corrigirParametros($variaveis);
         $this->init($parametros);
+        
+        //print $this->url;exit;
         curl_setopt ($this->ch, CURLOPT_CUSTOMREQUEST, "PUT");
-        curl_setopt ($this->ch, CURLOPT_POSTFIELDS, $parametros);
+        //curl_setopt ($this->ch, CURLOPT_POSTFIELDS, $parametros);
         $this->close();
         return $this;
     }
@@ -196,13 +200,14 @@ class ConsultaCurl{
             $variaveis["inputIdade"] = $this->calcularData($variaveis["inputDataNascimento"]);
         // --->
         foreach($variaveis as $chave => $valor){
-              $parametros .= strtolower(substr($chave,5,strlen($chave)))."=".$valor."&";          
+              $parametros .= strtolower(substr($chave,5,strlen($chave)))."=".urlencode($valor)."&";          
         
             }
+     
         $parametros = "?".substr($parametros,0,-1);
+
         }
        
-
         return $parametros;
      }   
 

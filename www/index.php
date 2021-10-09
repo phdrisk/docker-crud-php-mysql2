@@ -13,7 +13,8 @@
 <body>
 <?php 
 require 'vendor/autoload.php';
-$registros = new src\modelo\ConsultaCurl();
+$curl      = new src\modelo\ConsultaCurl();
+$funcoes   = src\modelo\Funcoes::get_instance();
 $acao      = $_GET['pag']    ?: false;
 $codigo    = $_GET['codigo'] ?: false;
 $variaveis = $_POST          ?: false;
@@ -27,26 +28,27 @@ if($acao == "formulario"){
 }elseif($acao == "incluirRegistro"){
 
  
-  $resultado =  json_decode($registros->postIncluir($variaveis)->getResultado());
+  $resultado =  json_decode($curl->postIncluir($variaveis)->getResultado());
   echo '<script>alert("'.$resultado->mensagem.'")</script>';
   include_once ('listar.php');
 
 }elseif($acao == "alterarRegistro"){
 
- $registro = $registros->getLista($codigo)->getResultado();
+ $registro = $curl->getLista($codigo)->getResultado();
  $registro = array_shift(json_decode($registro));
+ 
  include_once ('formulario_alterar.php');
          
 }elseif($acao == "alterarRegistro2"){
 
-  $resultado = json_decode($registros->putAlterar($variaveis)->getResultado());
+  $resultado = json_decode($curl->putAlterar($variaveis)->getResultado());
   echo '<script>alert("'.$resultado->mensagem.'")</script>';
   include_once ('listar.php');       
 
 
 }elseif($acao=="apagarRegistro"){
   
-  $registros->deleteExcluir($codigo)->getResultado();
+  $curl->deleteExcluir($codigo)->getResultado();
   include_once ('listar.php');
 
 } else {

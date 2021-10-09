@@ -10,11 +10,25 @@ namespace src\modelo;
 
 class Developers{
 
+  /*
+   * var da classe 
+   *public $nome,$codigo,$datanascimento,$idade,$hobby;
+  */
+  
+  /*
+  * Função construtora
+  * @acess public
+  * @param Class $conexao
+  * @return void
+  */
+
   public function __construct($conexao){
+  
   $this->conexao = $conexao;
   $this->daoDevelopers = new \src\dao\DaoDevelopers($conexao);
+  
   }
-
+  
   /*
   * Função de consulta registro 
   * @acess public
@@ -113,7 +127,7 @@ class Developers{
   public function excluir($codigo){ //print "codigo=".$codigo." ".$where;exit;
 
     if($consulta = $this->consultarId($codigo)){
-      
+
        return $this->daoDevelopers->excluir($codigo);
     }
 

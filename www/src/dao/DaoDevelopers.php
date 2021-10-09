@@ -19,7 +19,7 @@ class DaoDevelopers {
   * @return false/true
   */
 
-   public function incluir($where){
+   public function incluir($where){ 
 
       $sql = "insert into developers set {$where}"; 
       if(mysqli_query($this->conexao,$sql)){
@@ -60,7 +60,7 @@ class DaoDevelopers {
   * @return false/registro
   */
 
-   public function consultarId($codigo){
+   public function consultarId($codigo){ 
 
      $sql = "select * from developers where codigo='{$codigo}'";
      $query =  mysqli_query($this->conexao,$sql);
@@ -101,7 +101,7 @@ class DaoDevelopers {
   * @return true/false
   */
 
-   public function alterar($where){
+   public function alterar($where){ //print __FILE__."<br>".$where;exit;
 
       $sql = "update developers set {$where}";// print $sql;exit;
       if(mysqli_query($this->conexao,$sql))
