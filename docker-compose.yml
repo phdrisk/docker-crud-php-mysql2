@@ -2,7 +2,7 @@ php:
   build: .
   container_name: App2
   ports:
-   - "8081:80"
+   - "8888:80"
    - "443:443"
   volumes:
    - ./www:/var/www/html
