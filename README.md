@@ -53,10 +53,10 @@ db2:
 | PARA CRIAR O BANCO DE DADOS
 ```
 0.0.0.0:8888/config/criarBanco.php
-e depois retorne para:
-0.0.0.0:8888
 ```
 # 2) UTILIZAÇÃO
+## API endpoints
+### Retorna todos os desenvolvedores
 
 # OUTROS
 ## Instalação phpunit
