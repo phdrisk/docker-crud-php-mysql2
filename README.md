@@ -87,16 +87,42 @@ DELETE /developers/{codigo}
 Codes 204 (sucesso) / 400 (erro)
 ```
 
-
-
-
-
-
-
-
-
-
 # OUTROS
+## ESTRUTURA DO PROJETO
+```
+PHP 5.6.40
+MYSQL 5.7
+phpunit 5.7.27
+slim 3.12.3
+```
+
+
+### PASTAS
+- /
+  - composer.phar
+  - composer.json
+  - composer-setup.php
+  - phunit
+  - index.php
+  - formulario.php
+  - formulario_alterar.php
+  - listar.p
+- api/
+  - index.php   
+- src/
+  - modelo/
+    -   Conexao.php
+    -   ConsultaCurl.php
+    -   Developers.php
+    -   Funcoes.php
+  - dao/
+    -   DaoDevelopers.php
+- vendor/
+  - composer
+  - slim  
+
+
+
 ## Instalação phpunit
 ```
 apt-get --upgradable
