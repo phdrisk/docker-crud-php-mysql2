@@ -1,5 +1,7 @@
 *.txt
 *teste*
+*swp
 *curl*
 .htaccess_
+.gitignore
 x_testes/
