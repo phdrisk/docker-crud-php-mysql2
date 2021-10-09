@@ -16,6 +16,10 @@ $developers = new src\modelo\Developers($conexao);
 
 $controlerIncluir =  function(Request $request, Response $response, array $args) use ($developers){
 
+  
+
+
+
   $dbParams     = array("nome","sexo","idade","hobby","datanascimento");
   $params       = $request->getParams();
   unset($params['codigo']);
@@ -33,8 +37,13 @@ $controlerIncluir =  function(Request $request, Response $response, array $args)
        $where .= $chavesParams[$chave] . "='" .$params[$chavesParams[$chave]] . "', ";
      }
   }
-  
-  if ($cont != 4){
+
+  /*
+  * verifica se o numero de parametros está correto
+  */
+
+
+  if ($cont != 5){
 
         $mensagem = array("mensagem"=>"Parametros Incorretos!","descricao"=> array("parametros permitidos"=> array( "parametros"=>"nome,sexo,hobby e datanascimento","Ex. datanascimento"=>array("Ex"=>"AAAAMMDD")))
       ,"erro"=>"i90","total"=>$cont);
@@ -45,7 +54,7 @@ $controlerIncluir =  function(Request $request, Response $response, array $args)
   }
   // --> CORRIGE A CONDICAO
   $where = substr($where,0,-2);
-  
+  //print $where;exit;
   // -->
   
   if($developers->inserir($where)){

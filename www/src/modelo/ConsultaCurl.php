@@ -12,7 +12,7 @@ date_default_timezone_set('UTC');
 class ConsultaCurl{
 
     public $result;
-    public $url_data = "http://ia.phdassets.net:9999/api/index.php/dev/";
+    public $url_data = "http://ia.phdassets.net:8081/api/index.php/dev/";
 
     public function __construct(){}
 
@@ -81,7 +81,7 @@ class ConsultaCurl{
     
     public function getListaParametros(Array $parametros){
       
-      $this->init($parametros);
+      $this->init(false);
       curl_setopt ($this->ch, CURLOPT_CUSTOMREQUEST, "GET");
       curl_setopt ($this->ch, CURLOPT_POSTFIELDS, $parametros);
       $this->close();
@@ -94,14 +94,20 @@ class ConsultaCurl{
     * @param  Array $parametros
     * @return InstanceMethod
     */
+
     
     public function postIncluir($variaveis){
+
+
+        unset($variaveis['inputCodigo']);
         $parametros = $this->corrigirParametros($variaveis);
-        // -->
+
+
         $this->init($parametros);
         curl_setopt ($this->ch, CURLOPT_POST, 1);
         curl_setopt ($this->ch, CURLOPT_POSTFIELDS, $parametros);
         $this->close();
+
         return $this;
     }
 
@@ -179,7 +185,7 @@ class ConsultaCurl{
 
         }
     /*
-    * Função para converter os dados do formulario para fomato query
+    * Função para converter os dados do formulario para formato query
     * @acess public
     * @param Array $variaves
     * @return Query String

@@ -11,49 +11,48 @@
   <title>CRUD-Docker-PHP-MySql</title>
 </head>
 <body>
- <?php 
- require 'vendor/autoload.php';
- $registros = new src\modelo\ConsultaCurl();
- $acao      = $_GET['pag'] ?: false;
- $codigo    = $_GET['codigo'] ?: false;
- $variaveis = $_POST ?: false;
- unset($_GET);
- unset($_POST);
- 
-      // -->
- if($acao == "formulario"){
+<?php 
+require 'vendor/autoload.php';
+$registros = new src\modelo\ConsultaCurl();
+$acao      = $_GET['pag']    ?: false;
+$codigo    = $_GET['codigo'] ?: false;
+$variaveis = $_POST          ?: false;
+unset($_GET);
+unset($_POST);
+// --- >
+if($acao == "formulario"){
 
   include_once ('formulario.php');
 
 }elseif($acao == "incluirRegistro"){
 
+ 
   $resultado =  json_decode($registros->postIncluir($variaveis)->getResultado());
   echo '<script>alert("'.$resultado->mensagem.'")</script>';
- 
-
   include_once ('listar.php');
 
 }elseif($acao == "alterarRegistro"){
 
  $registro = $registros->getLista($codigo)->getResultado();
  $registro = array_shift(json_decode($registro));
- 
  include_once ('formulario_alterar.php');
          
 }elseif($acao == "alterarRegistro2"){
 
   $resultado = json_decode($registros->putAlterar($variaveis)->getResultado());
-
   echo '<script>alert("'.$resultado->mensagem.'")</script>';
   include_once ('listar.php');       
 
 
 }elseif($acao=="apagarRegistro"){
-  $registros->deleteExcluir($codigo)->getResultado();  
+  
+  $registros->deleteExcluir($codigo)->getResultado();
   include_once ('listar.php');
 
 } else {
+      
   include_once ('listar.php');
+
 }       
 
 ?> 

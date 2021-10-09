@@ -18,34 +18,14 @@ use PHPUnit\Framework\TestCase;
 
 class ClassesTest  extends TestCase{
 
+  /*
+  * Classe Conexao
+  */
+    public function testConexao(){
 
- public function testConexao(){
+       $conexao    = src\modelo\Conexao::get_instance();
 
-    $conexao    = src\modelo\Conexao::get_instance();
-
- }
-
- public function testDevelopers(){
-
-  $developer = new Developers($conexao);
-
- }
-
- public function testDaoDevelopers(){
-
-  $daoDeveloper = new DaoDevelopers($conexao);
-
- }
-
-
- public function testCurl(){
-
-   $stub = $this->createMock(ConsultaCurl::class);
-   $stub->method('getResultado')->willReturn(true);
-   $this->assertEquals(true,$stub->getResultado());
-
-
-  }
+    }
 
  // public function testConexao2(){
 
@@ -57,13 +37,48 @@ class ClassesTest  extends TestCase{
  // }
 
 
+  /*
+  * Classe Developers
+  */
+  
+ public function testDevelopers(){
+
+  $developer = new Developers($conexao);
+
+ }
+
 public function testRetorno(){
 
-$classe = $this->createMock(Developers::class); 
-  $retorno = $classe->method('retorno')->willReturn("suiz");
-  $this->assertEquals("luiz",$classe->retorno());
+ $classe = $this->createMock(Developers::class); 
+ $retorno = $classe->method('retorno')->willReturn("suiz");
+ $this->assertEquals("luiz",$classe->retorno());
 
 }
+
+/*
+ * Classe DaoDevelopers
+ */
+  
+ public function testDaoDevelopers(){
+
+  $daoDeveloper = new DaoDevelopers($conexao);
+  
+ }
+
+/*
+ * Classe ConsultaCurl
+ */
+
+ public function testCurl(){
+
+   $stub = $this->createMock(ConsultaCurl::class);
+   $stub->method('getResultado')->willReturn(true);
+   $this->assertEquals(true,$stub->getResultado());
+
+
+  }
+
+
 
 
 

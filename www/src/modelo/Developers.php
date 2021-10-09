@@ -95,6 +95,7 @@ class Developers{
   public function alterar($codigo,$where){ //print $codigo." ".$where;exit;
 
     if($consulta = $this->consultarId($codigo)){
+
          return $this->daoDevelopers->alterar($where);
       }
 
@@ -110,16 +111,14 @@ class Developers{
   */
 
   public function excluir($codigo){ //print "codigo=".$codigo." ".$where;exit;
+
     if($consulta = $this->consultarId($codigo)){
+      
        return $this->daoDevelopers->excluir($codigo);
     }
 
     return false;
   }
 
-public function retorno(){
-
-  return "luiz";
-}
 
 }
