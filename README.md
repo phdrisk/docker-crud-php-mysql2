@@ -48,9 +48,14 @@ db2:
 ```
 0.0.0.0:8888
 ```
-| CASO DE UM ERRO OU NÃO SEJA MOSTRADO UMA LISTA, DIGITE A URL ABAIXO 
+### ERROS POSSÍVEIS
 
-| PARA CRIAR O BANCO DE DADOS
+> Warning: require(vendor/autoload.php): failed to open stream: No such file or directory in /var/www/html/index.php on line 15
+no prompt de comando digite:
+```
+sudo docker exec App2 composer udate /var/www/html/
+```
+> Caso apareça uma tabela vazia, degite no navegador o endereço abaixo para iniciar os registros ou em "NOVO REGISTRO"
 ```
 0.0.0.0:8888/config/criarBanco.php
 ```
