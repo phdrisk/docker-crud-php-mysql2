@@ -5,3 +5,4 @@
 .htaccess_
 .gitignore
 x_testes/
+vendor/

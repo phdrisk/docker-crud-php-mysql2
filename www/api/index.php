@@ -215,6 +215,7 @@ $controlerApagar =  function(Request $request, Response $response, array $args) 
 */
 
 $app->post('/dev/',           $controlerIncluir);
+$app->get('/dev',             $controlerConsultar);
 $app->get('/dev/',            $controlerConsultar);
 $app->get('/dev/{codigo}',    $controlerConsultar);
 $app->delete('/dev/{codigo}', $controlerApagar);
