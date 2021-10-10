@@ -1,6 +1,6 @@
 php:
   build: .
-  container_name: App2
+  container_name: app_crud
   ports:
    - "8888:80"
    - "443:443"

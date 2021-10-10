@@ -12,7 +12,7 @@ date_default_timezone_set('UTC');
 class ConsultaCurl{
 
     public $result;
-    public $url_data = "http://ia.phdassets.net:8081/api/index.php/dev/";
+    public $url_data = "http://ia.phdassets.net:8888/api/index.php/dev/";
 
     public function __construct(){}
 

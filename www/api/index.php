@@ -9,8 +9,6 @@ $conexao    = src\modelo\Conexao::get_instance();
 $funcoes    = src\modelo\Funcoes::get_instance();
 $developers = new src\modelo\Developers($conexao);
 
-
-
 // /*
 // * Função para calcular a diferenca entre anos de duas datas
 // * @acess public
@@ -73,8 +71,9 @@ $controlerIncluir =  function(Request $request, Response $response, array $args)
 
   }
   // --> CORRIGE A CONDICAO
-  $where = substr($where,0,-2);
-  //print $where;exit;
+  $where .= "datainclusao=CURRENT_DATE()";
+  #$where = substr($where,0,-2);
+  
   // -->
   
   if($developers->inserir($where)){
