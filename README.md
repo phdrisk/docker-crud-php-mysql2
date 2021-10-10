@@ -1,5 +1,11 @@
 # docker-crud-php-mysql
 Projeto CRUD - utilizando Docker, Php e MySql
+```
+PHP 5.6.40
+MYSQL 5.7
+phpunit 5.7.27
+slim 3.12.3
+```
 
 # 1) ETAPAS PARA INSTALAÇÃO
 ## 1.1) VERIFIQUE SE O docker-compose esta instalado no seu (linux)
@@ -94,14 +100,6 @@ Codes 204 (sucesso) / 400 (erro)
 
 # OUTROS
 ## ESTRUTURA DO PROJETO
-```
-PHP 5.6.40
-MYSQL 5.7
-phpunit 5.7.27
-slim 3.12.3
-```
-
-
 ### PASTAS
 - /
   - composer.phar
