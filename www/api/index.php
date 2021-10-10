@@ -213,10 +213,10 @@ $controlerApagar =  function(Request $request, Response $response, array $args) 
 * @return String de Result
 */
 
-$app->post('/dev/',           $controlerIncluir);
-$app->get('/dev',             $controlerConsultar);
-$app->get('/dev/',            $controlerConsultar);
-$app->get('/dev/{codigo}',    $controlerConsultar);
-$app->delete('/dev/{codigo}', $controlerApagar);
-$app->put('/dev/',            $controlerAlterar);
+$app->post('/developers/',           $controlerIncluir);
+$app->get('/developers',             $controlerConsultar);
+$app->get('/developers/',            $controlerConsultar);
+$app->get('/developers/{codigo}',    $controlerConsultar);
+$app->delete('/developers/{codigo}', $controlerApagar);
+$app->put('/developers/',            $controlerAlterar);
 $app->run();
