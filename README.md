@@ -60,7 +60,10 @@ RUN docker-php-ext-install mysqli
 
 | acesse a pasta : cd docker-crud-php-mysql2 e execute o docker compose
 
-***Através do comando :*** docker-compose up -d;docker exec app_crud composer install
+***Através do comando :*** 
+```diff
+-docker-compose up -d;docker exec app_crud composer install
+```
 
 ***É importante executar o composer pela linha de comando pois ele da um bug se executado no Dockerfile***
 
