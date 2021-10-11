@@ -16,8 +16,16 @@ require 'vendor/autoload.php';
 $curl      = new src\modelo\ConsultaCurl();
 $funcoes   = src\modelo\Funcoes::get_instance();
 $acao      = $_GET['pag']    ?: false;
-$codigo    = $_GET['codigo'] ?: false;
-$variaveis = $_POST          ?: false;
+$codigo    = is_numeric($_GET['codigo']) ? (int)$_GET['codigo']   : false;
+$variaveis = ($_POST         ?: false);
+
+if($variaveis){
+
+  $variaveis['nome'] = $funcoes::injectPost($variaveis['nome'],"string");
+  $variaveis['hobby'] = $funcoes::injectPost($variaveis['nome'],"string");
+
+}
+
 unset($_GET);
 unset($_POST);
 // --- >

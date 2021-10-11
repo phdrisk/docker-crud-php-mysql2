@@ -69,5 +69,22 @@ class Funcoes{
 
 	}
 
+		/*
+	* Função para que retira caracteres indesejados
+	* @acess public
+	* @param $alor,$tipo
+	* @return String/Integer
+	*/
+
+
+	public static function injectPost($valor,$tipo="string"){
+
+
+    
+			return  ($tipo = "inteiro" ? preg_replace('/[^[:alnum:]_]/','',$svalor) : preg_replace('/[^[:alpha:]_]/','',$svalor));
+
+
+	}
+
 
 }
