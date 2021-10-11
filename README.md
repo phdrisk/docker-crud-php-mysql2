@@ -23,6 +23,7 @@ sudo chmod +x /usr/local/bin/docker-compose
 
 | clone o arquivo do github dentro desta pasta
 
+
 ```
 git clone https://github.com:phdrisk/docker-crud-php-mysql2.git
 ```
@@ -48,7 +49,12 @@ db2:
    - MYSQL_DATABASE=phprs
 ```
 ## 3) EXECUTE O DOCKER COMPOSE
-***Através do comando:*** docker-compose up -d;docker exec app_crud composer install
+
+| acesse a pasta : cd docker-crud-php-mysql2 e execute o docker compose
+
+***Através do comando :*** docker-compose up -d;docker exec app_crud composer install
+
+***É importante executar o composer pela linha de comando pois ele da um bug se executado no Dockerfile***
 
 ## 4) ABRA SEU NAVEGADOR PREFERIDO E DIGITE
 ```
