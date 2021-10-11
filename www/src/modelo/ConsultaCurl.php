@@ -12,9 +12,15 @@ date_default_timezone_set('UTC');
 class ConsultaCurl{
 
     public $result;
-    public $url_data = "http://ia.phdassets.net:8888/api/index.php/dev/";
+    #public $url_data = "http://ia.phdassets.net:8888/api/developers/";
+    public $url_data = "http://crudphpmysql.ddns.net:8888/api/developers/";
+    #private $url_data = "http://0.0.0.0:8888/api/developers/";
 
-    public function __construct(){}
+    public function __construct(){
+
+
+
+    }
 
     /*
     * Função que seta URL
@@ -25,9 +31,22 @@ class ConsultaCurl{
 
     public function setUrl($url){
 
-        $this->$url = $url;
+        $this->url_data = $url;
 
      }
+
+     /*
+    * Função que get URL
+    * @acess public
+    * @return String $url
+    */
+
+    public function getUrl(){
+
+        return $this->url_data;
+
+     }
+
     /*
     * Função que inicializa o metodo CURL
     * @acess public
@@ -39,6 +58,14 @@ class ConsultaCurl{
 
         $this->url  = !$parametros ? $this->url_data : $this->url_data.$parametros;
         $this->ch   = curl_init();
+
+        //curl_setopt( $this->ch, CURLOPT_PROXY, $_SERVER['SERVER_PORT']);
+        //if(defined('CURLOPT_IPRESOLVE') && defined('CURL_IPRESOLVE_V4')){
+
+            curl_setopt( $this->ch, CURLOPT_IPRESOLVE, CURL_IPRESOLVE_WHATEVER);
+        
+        //}
+
         curl_setopt( $this->ch, CURLOPT_URL, $this->url);
         curl_setopt($this->ch, CURLOPT_RETURNTRANSFER, true);
         return $this;        
@@ -54,7 +81,8 @@ class ConsultaCurl{
    private function close(){
    
         $this->result  = curl_exec($this->ch);
-        $this->error   = curl_error($this->ch);
+        $this->error   = curl_error($this->ch) ." (".curl_errno($this->ch).") ";
+        $this->info   = curl_getinfo($this->ch, CURLINFO_HTTP_CODE);
         curl_close($this->ch);
         return $this;
 

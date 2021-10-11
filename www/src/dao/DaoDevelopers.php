@@ -41,7 +41,7 @@ class DaoDevelopers {
 
    public function consultar(){
 
-     $sql = "select * from developers";
+     $sql = "select * from developers"; //print $sql; exit;
      $query =  mysqli_query($this->conexao,$sql);
      if( mysqli_affected_rows($this->conexao)==0)
       return false;

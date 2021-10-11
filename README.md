@@ -48,12 +48,17 @@ db2:
    - MYSQL_DATABASE=phprs
 ```
 ## 3) EXECUTE O DOCKER COMPOSE
-***Através do comando:*** docker-compose up -d
+***Através do comando:*** docker-compose up -d;docker exec app_crud composer install
 
 ## 4) ABRA SEU NAVEGADOR PREFERIDO E DIGITE
 ```
 0.0.0.0:8888
 ```
+## 5) ACESSO ONLINE
+```
+http://crudphpmysql.ddns.net:8888
+```
+
 ### ERROS POSSÍVEIS
 
 > Warning: require(vendor/autoload.php): failed to open stream: No such file or directory in /var/www/html/index.php on line 15
