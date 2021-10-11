@@ -28,7 +28,7 @@ sudo chmod +x /usr/local/bin/docker-compose
 git clone https://github.com:phdrisk/docker-crud-php-mysql2.git
 ```
 
-Caso necessário modifique a porta de utilização do app Docker
+Docker Compose
 
 ```
 php:
@@ -48,6 +48,14 @@ db2:
    - MYSQL_ROOT_PASSWORD=phprs
    - MYSQL_DATABASE=phprs
 ```
+Dockerfile
+
+```
+FROM phdrisk/dockers:latest
+RUN docker-php-ext-install mysqli
+
+```
+
 ## 3) EXECUTE O DOCKER COMPOSE
 
 | acesse a pasta : cd docker-crud-php-mysql2 e execute o docker compose
